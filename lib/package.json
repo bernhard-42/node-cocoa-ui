@@ -1,0 +1,19 @@
+{
+  "name": "nodobjc",
+  "version": "0.1.0",
+  "description": "A Cocoa UI library for node",
+  "main": "index",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "objc"
+  ],
+  "author": "Bernhard Walter",
+  "license": "MIT",
+  "dependencies": {
+    "nodobjc": "git://github.com/TooTallNate/NodObjC",
+    "debug": "^2.1.1",
+    "q": "^1.1.2"
+  }
+}

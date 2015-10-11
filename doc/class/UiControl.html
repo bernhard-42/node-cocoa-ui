@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset='UTF-8'>
+  <title>CoffeeScript API Documentation</title>
+  <script src='../javascript/application.js'></script>
+  <script src='../javascript/search.js'></script>
+  <link rel='stylesheet' href='../stylesheets/application.css' type='text/css'>
+</head>
+  <body>
+    <div id='base' data-path='../'></div>
+<div id='header'>
+  <div id='menu'>
+    <a href='../alphabetical_index.html' title='Index'>
+      Index
+    </a>
+    &raquo;
+    <span class='title'>UiControl</span>
+  </div>
+</div>
+    <div id='content'>
+      <h1>
+        Class:
+        UiControl
+      </h1>
+      <table class='box'>
+        <tr>
+          <td>Defined in:</td>
+          <td>lib&#47;cocoa-uicontrol.coffee</td>
+        </tr>
+      </table>
+      <h2>Overview</h2>
+      <div class='docstring'>
+  <p>The UiControl class is the base class for all Cocoa controls. 
+It creates the actual Cocoa instance for the control and a delegate class if requested.</p><p>The delegate class willbe named &quot;#{delegateName}_#{tag}&quot;, so ech control using the same delegateName needs to have a different tag.
+The delegate class will be instantiated by UiButton or UiText which inherit from UiControl via their init method.</p><p>If UiControl is used directly, an init method needs to be defined that calls @delegate.init()</p>
+</div>
+<div class='tags'>
+</div>
+      <h2>Direct Known Subclasses</h2>
+      <p class='children'>
+        <a href='../class/ProgressIndicator.html'>ProgressIndicator</a>
+        <a href='../class/RadioButtons.html'>RadioButtons</a>
+        <a href='../class/ScrollView.html'>ScrollView</a>
+        <a href='../class/UiButton.html'>UiButton</a>
+        <a href='../class/UiText.html'>UiText</a>
+        <a href='../class/View.html'>View</a>
+      </p>
+      <h2>Instance Method Summary</h2>
+      <ul class='summary'>
+  <li>
+    <span class='signature'>
+      <a href='#setBackgroundColor-dynamic'>
+        #
+(UiControl)
+<b>setBackgroundColor</b><span>(r, g, b, a = 1)</span>
+      </a>
+    </span>
+    <span class='desc'>
+      Set the background color for an UiControl 
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#setEnabled-dynamic'>
+        #
+(UiControl)
+<b>setEnabled</b><span>(flag)</span>
+      </a>
+    </span>
+    <span class='desc'>
+      Set the background color for an UiControl 
+    </span>
+  </li>
+</ul>
+      <h2>Constructor Details</h2>
+      <div class='methods'>
+  <div class='method_details'>
+    <p class='signature' id='constructor-dynamic'>
+      #
+(void)
+<b>constructor</b><span>(tag, parent, UiClass, delegateName = null, init = [&quot;init&quot;])</span>
+      <br>
+    </p>
+    <div class='docstring'>
+  <p>Create a new UiControl instance.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>tag</span>
+      <span class='type'>
+        (
+          <tt>String</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>Tag of the UiControl instance (each control for one delegateName must have a different tag) </span>
+    </li>
+    <li>
+      <span class='name'>parent</span>
+      <span class='type'>
+        (
+          <tt><a href='../class/Window.html'>Window</a></tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>The Window instance this button is connect with </span>
+    </li>
+    <li>
+      <span class='name'>UiClass</span>
+      <span class='type'>
+        (
+          <tt>String</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>The name of the Cocoac control calls to instantiate </span>
+    </li>
+    <li>
+      <span class='name'>delegateName</span>
+      <span class='type'>
+        (
+          <tt>String</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>Name of delegate to be created. If missing, no delegate gets created </span>
+    </li>
+    <li>
+      <span class='name'>init</span>
+      <span class='type'>
+        (
+          <tt>Array&lt;String&gt;</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>An array of Cocoa selectors and parameters. </span>
+    </li>
+  </ul>
+</div>
+  </div>
+</div>
+      <h2>Instance Method Details</h2>
+      <div class='methods'>
+  <div class='method_details'>
+    <p class='signature' id='setBackgroundColor-dynamic'>
+      #
+(UiControl)
+<b>setBackgroundColor</b><span>(r, g, b, a = 1)</span>
+      <br>
+    </p>
+    <div class='docstring'>
+  <p>Set the background color for an UiControl</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>r</span>
+      <span class='type'>
+        (
+          <tt>Float</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>Value for red between 0 and 1 </span>
+    </li>
+    <li>
+      <span class='name'>g</span>
+      <span class='type'>
+        (
+          <tt>Float</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>Value for green between 0 and 1 </span>
+    </li>
+    <li>
+      <span class='name'>b</span>
+      <span class='type'>
+        (
+          <tt>Float</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>Value for blue between 0 and 1 </span>
+    </li>
+    <li>
+      <span class='name'>a</span>
+      <span class='type'>
+        (
+          <tt>Float</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>Value for alpha between 0 and 1, default is 1 </span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (
+        <tt><a href='../class/UiControl.html'>UiControl</a></tt>
+      )
+      &mdash;
+      <span class='desc'>To allow call chaining </span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='setEnabled-dynamic'>
+      #
+(UiControl)
+<b>setEnabled</b><span>(flag)</span>
+      <br>
+    </p>
+    <div class='docstring'>
+  <p>Set the background color for an UiControl</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>flag</span>
+      <span class='type'>
+        (
+          <tt>Boolean</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>Set the UiControl instance to enabled (true) or disabled (false) </span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (
+        <tt><a href='../class/UiControl.html'>UiControl</a></tt>
+      )
+      &mdash;
+      <span class='desc'>To allow call chaining </span>
+    </li>
+  </ul>
+</div>
+  </div>
+</div>
+    </div>
+    <div id='footer'>
+  March 07, 15 14:01:56 by
+  <a href='https://github.com/coffeedoc/codo' title='CoffeeScript API documentation generator'>
+    Codo
+  </a>
+  2.0.10
+  &#10034;
+  Press H to see the keyboard shortcuts
+  &#10034;
+  <a href='http://twitter.com/netzpirat' target='_parent'>@netzpirat</a>
+  &#10034;
+  <a href='http://twitter.com/_inossidabile' target='_parent'>@_inossidabile</a>
+</div>
+<iframe id='search_frame'></iframe>
+<div id='fuzzySearch'>
+  <input type='text'>
+  <ol></ol>
+</div>
+<div id='help'>
+  <p>
+    Quickly fuzzy find classes, mixins, methods, file:
+  </p>
+  <ul>
+    <li>
+      <span>T</span>
+      Open fuzzy finder dialog
+    </li>
+  </ul>
+  <p>
+    Control the navigation frame:
+  </p>
+  <ul>
+    <li>
+      <span>L</span>
+      Toggle list view
+    </li>
+    <li>
+      <span>C</span>
+      Show class list
+    </li>
+    <li>
+      <span>I</span>
+      Show mixin list
+    </li>
+    <li>
+      <span>F</span>
+      Show file list
+    </li>
+    <li>
+      <span>M</span>
+      Show method list
+    </li>
+    <li>
+      <span>E</span>
+      Show extras list
+    </li>
+  </ul>
+  <p>
+    You can focus and blur the search input:
+  </p>
+  <ul>
+    <li>
+      <span>S</span>
+      Focus search input
+    </li>
+    <li>
+      <span>Esc</span>
+      Blur search input
+    </li>
+  </ul>
+</div>
+  </body>
+</html>

@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset='UTF-8'>
+  <title>CoffeeScript API Documentation</title>
+  <script src='../javascript/application.js'></script>
+  <script src='../javascript/search.js'></script>
+  <link rel='stylesheet' href='../stylesheets/application.css' type='text/css'>
+</head>
+  <body>
+    <div id='base' data-path='../'></div>
+<div id='header'>
+  <div id='menu'>
+    <a href='../alphabetical_index.html' title='Index'>
+      Index
+    </a>
+    &raquo;
+    <span class='title'>View</span>
+  </div>
+</div>
+    <div id='content'>
+      <h1>
+        Class:
+        View
+      </h1>
+      <table class='box'>
+        <tr>
+          <td>Defined in:</td>
+          <td>lib&#47;cocoa-view.coffee</td>
+        </tr>
+        <tr>
+          <td>Inherits:</td>
+          <td>
+            <a href='../class/UiControl.html'>UiControl</a>
+          </td>
+        </tr>
+      </table>
+      <h2>Overview</h2>
+      <div class='docstring'>
+  <p>The View class creates a Cocoa view and wraps them into a coffeescript object</p>
+</div>
+<div class='tags'>
+</div>
+      <h2>Instance Method Summary</h2>
+      <ul class='summary'>
+  <li>
+    <span class='signature'>
+      <a href='#setLayout-dynamic'>
+        #
+(View)
+<b>setLayout</b><span>(constraint, metrics, views)</span>
+      </a>
+    </span>
+    <span class='desc'>
+      The library uses Apples AutoLayout and the Visual Format Language (VFL) 
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#addConstraints-dynamic'>
+        #
+(View)
+<b>addConstraints</b><span>(constraints)</span>
+      </a>
+    </span>
+    <span class='desc'>
+      Add constraints to a view 
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#addSubview-dynamic'>
+        #
+(View)
+<b>addSubview</b><span>(subview)</span>
+      </a>
+    </span>
+    <span class='desc'>
+      Add a subview to a view 
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#makeContentView-dynamic'>
+        #
+(View)
+<b>makeContentView</b><span>()</span>
+      </a>
+    </span>
+    <span class='desc'>
+      Make this view as content view of the parent window 
+    </span>
+  </li>
+</ul>
+      <h2>
+        <small>Inherited Method Summary</small>
+        <h3 class='inherited'>
+          Methods inherited from
+          <a href='../class/UiControl.html'>UiControl</a>
+        </h3>
+        <p class='inherited'>
+          <a href='../class/UiControl.html#setBackgroundColor-dynamic'>#setBackgroundColor</a>
+          <a href='../class/UiControl.html#setEnabled-dynamic'>#setEnabled</a>
+        </p>
+      </h2>
+      <h2>Constructor Details</h2>
+      <div class='methods'>
+  <div class='method_details'>
+    <p class='signature' id='constructor-dynamic'>
+      #
+(void)
+<b>constructor</b><span>(tag, parent)</span>
+      <br>
+    </p>
+    <div class='docstring'>
+  <p>Create a new View. The Cocoa NSView instance can be accessed via property &quot;nscontrol&quot;</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>tag</span>
+      <span class='type'>
+        (
+          <tt>String</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>Tag of the Button instance (each control of a one type must have a different tag) </span>
+    </li>
+    <li>
+      <span class='name'>parent</span>
+      <span class='type'>
+        (
+          <tt><a href='../class/Window.html'>Window</a></tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>The Window instance this button is connect with </span>
+    </li>
+  </ul>
+</div>
+  </div>
+</div>
+      <h2>Instance Method Details</h2>
+      <div class='methods'>
+  <div class='method_details'>
+    <p class='signature' id='setLayout-dynamic'>
+      #
+(View)
+<b>setLayout</b><span>(constraint, metrics, views)</span>
+      <br>
+    </p>
+    <div class='docstring'>
+  <p>The library uses Apples AutoLayout and the Visual Format Language (VFL)</p>
+  <div class='examples'>
+    <h3>Examples:</h3>
+    <h4>
+      
+    </h4>
+    <pre><code class='coffeescript'>views = [clock, inputfield, scrollview, changecase, quit]
+view.addSubview v for v in views
+metrics = {h1:200, h2:15, h3:20, w1:400, w2:80}   # ... define some metrics ...
+constraints = [                                   # ... and constraints ....
+  &quot;H:|-[input(&gt;=w1)]-[clock(w2)]-|&quot;               # (use tags from control definitions and metric keys)
+  &quot;H:|-[scroll(&gt;=w1)]-[change(w2)]-|&quot;
+  &quot;H:|-[scroll(&gt;=w1)]-[quit(w2)]-|&quot;
+  &quot;V:|-[input(&gt;=h1)]-[scroll(&gt;=h1)]-|&quot;
+  &quot;V:|-[clock(h2)]&quot;
+  &quot;V:[change(h3)]-(4)-[quit(h3)]-|&quot;
+]
+for constraint in constraints
+  view.setLayout(constraint, metrics, views)</code></pre>
+  </div>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>constraint</span>
+      <span class='type'>
+        (
+          <tt>String</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>A single VFL constraint </span>
+    </li>
+    <li>
+      <span class='name'>metrics</span>
+      <span class='type'>
+        (
+          <tt>Object</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>An Object continaing the measures used in the constraint  </span>
+    </li>
+    <li>
+      <span class='name'>views</span>
+      <span class='type'>
+        (
+          <tt>Array&lt;Object&gt;</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>An Array of UI controls used in the constraint </span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (
+        <tt><a href='../class/View.html'>View</a></tt>
+      )
+      &mdash;
+      <span class='desc'>To enable call chaining </span>
+    </li>
+  </ul>
+  <h3>See also:</h3>
+  <ul class='see'>
+    <li>
+      <a href='https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/AutolayoutPG/VisualFormatLanguage/VisualFormatLanguage.html'>https:&#47;&#47;developer.apple.com&#47;library&#47;ios&#47;documentation&#47;UserExperience&#47;Conceptual&#47;AutolayoutPG&#47;VisualFormatLanguage&#47;VisualFormatLanguage.html</a>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='addConstraints-dynamic'>
+      #
+(View)
+<b>addConstraints</b><span>(constraints)</span>
+      <br>
+    </p>
+    <div class='docstring'>
+  <p>Add constraints to a view</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>constraints</span>
+      <span class='type'>
+        (
+          <tt>Array&lt;String&gt;</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>An array of VFL constrint strings </span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (
+        <tt><a href='../class/View.html'>View</a></tt>
+      )
+      &mdash;
+      <span class='desc'>To enable call chaining </span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='addSubview-dynamic'>
+      #
+(View)
+<b>addSubview</b><span>(subview)</span>
+      <br>
+    </p>
+    <div class='docstring'>
+  <p>Add a subview to a view</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>subview</span>
+      <span class='type'>
+        (
+          <tt><a href='../class/View.html'>View</a></tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>The view to be added as subview </span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (
+        <tt><a href='../class/View.html'>View</a></tt>
+      )
+      &mdash;
+      <span class='desc'>To enable call chaining </span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='makeContentView-dynamic'>
+      #
+(View)
+<b>makeContentView</b><span>()</span>
+      <br>
+    </p>
+    <div class='docstring'>
+  <p>Make this view as content view of the parent window</p>
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (
+        <tt><a href='../class/View.html'>View</a></tt>
+      )
+      &mdash;
+      <span class='desc'>To enable call chaining </span>
+    </li>
+  </ul>
+</div>
+  </div>
+</div>
+    </div>
+    <div id='footer'>
+  March 07, 15 14:01:56 by
+  <a href='https://github.com/coffeedoc/codo' title='CoffeeScript API documentation generator'>
+    Codo
+  </a>
+  2.0.10
+  &#10034;
+  Press H to see the keyboard shortcuts
+  &#10034;
+  <a href='http://twitter.com/netzpirat' target='_parent'>@netzpirat</a>
+  &#10034;
+  <a href='http://twitter.com/_inossidabile' target='_parent'>@_inossidabile</a>
+</div>
+<iframe id='search_frame'></iframe>
+<div id='fuzzySearch'>
+  <input type='text'>
+  <ol></ol>
+</div>
+<div id='help'>
+  <p>
+    Quickly fuzzy find classes, mixins, methods, file:
+  </p>
+  <ul>
+    <li>
+      <span>T</span>
+      Open fuzzy finder dialog
+    </li>
+  </ul>
+  <p>
+    Control the navigation frame:
+  </p>
+  <ul>
+    <li>
+      <span>L</span>
+      Toggle list view
+    </li>
+    <li>
+      <span>C</span>
+      Show class list
+    </li>
+    <li>
+      <span>I</span>
+      Show mixin list
+    </li>
+    <li>
+      <span>F</span>
+      Show file list
+    </li>
+    <li>
+      <span>M</span>
+      Show method list
+    </li>
+    <li>
+      <span>E</span>
+      Show extras list
+    </li>
+  </ul>
+  <p>
+    You can focus and blur the search input:
+  </p>
+  <ul>
+    <li>
+      <span>S</span>
+      Focus search input
+    </li>
+    <li>
+      <span>Esc</span>
+      Blur search input
+    </li>
+  </ul>
+</div>
+  </body>
+</html>

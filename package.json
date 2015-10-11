@@ -1,0 +1,14 @@
+{
+  "name": "nodobjc",
+  "version": "0.1.0",
+  "description": "Testing nodobj with coffeescript",
+  "main": "lib/index",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "objc"
+  ],
+  "author": "Bernhard Walter",
+  "license": "MIT"
+}

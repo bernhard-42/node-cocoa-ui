@@ -1,0 +1,6 @@
+MUST
+- Tests
+	
+NICE TO HAVE
+	- investigate on horizontical scrolling in ScrollViews
+	- add ScrollView callbacks

@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset='UTF-8'>
+  <title>CoffeeScript API Documentation</title>
+  <script src='../javascript/application.js'></script>
+  <script src='../javascript/search.js'></script>
+  <link rel='stylesheet' href='../stylesheets/application.css' type='text/css'>
+</head>
+  <body>
+    <div id='base' data-path='../'></div>
+<div id='header'>
+  <div id='menu'>
+    <a href='../alphabetical_index.html' title='Index'>
+      Index
+    </a>
+    &raquo;
+    <span class='title'>App</span>
+  </div>
+</div>
+    <div id='content'>
+      <h1>
+        Class:
+        App
+      </h1>
+      <table class='box'>
+        <tr>
+          <td>Defined in:</td>
+          <td>lib&#47;cocoa-app.coffee</td>
+        </tr>
+      </table>
+      <h2>Overview</h2>
+      <div class='docstring'>
+  <p>App class is the main Cocoa UI class.
+There is a specific way to import it in order to control when the $.import &quot;AppKit&quot; is started (see example).
+It is important to understand that run() will start the Cocoa runloop and node event loop is ignored afterwards.
+Therefor App creates an RPC server using the Runloop version of CocoaAsyncSocket Framework (<a href="https://github.com/robbiehanson/CocoaAsyncSocket">https://github.com/robbiehanson/CocoaAsyncSocket</a>).
+AppProxy will communicate with this RPC server</p>
+  <div class='examples'>
+    <h3>Examples:</h3>
+    <h4>
+      
+    </h4>
+    <pre><code class='coffeescript'>App = require(&quot;cocoa-ui&quot;).App()
+
+app = new App()
+.onReady -&gt;
+  createUI()
+.onStopping -&gt;
+  debug &quot;Stopping&quot;
+.run()</code></pre>
+  </div>
+</div>
+<div class='tags'>
+</div>
+      <h2>Instance Method Summary</h2>
+      <ul class='summary'>
+  <li>
+    <span class='signature'>
+      <a href='#run-dynamic'>
+        #
+(void)
+<b>run</b><span>()</span>
+      </a>
+    </span>
+    <span class='desc'>
+      Start the Cocoa Runloop 
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#handler-dynamic'>
+        #
+(String)
+<b>handler</b><span>(msg)</span>
+      </a>
+    </span>
+    <span class='bound note title'>Bound</span>
+    <span class='desc'>
+      Handler for rpc calls 
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#setMainMenu-dynamic'>
+        #
+(App)
+<b>setMainMenu</b><span>(menu)</span>
+      </a>
+    </span>
+    <span class='desc'>
+      Add the main menu to the App 
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#setStatusBar-dynamic'>
+        #
+(App)
+<b>setStatusBar</b><span>(icon, title)</span>
+      </a>
+    </span>
+    <span class='desc'>
+      Add a status bar menu to the App 
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#openDialog-dynamic'>
+        #
+(void)
+<b>openDialog</b><span>(callback, options = {})</span>
+      </a>
+    </span>
+    <span class='desc'>
+      Open the system file open dialog as a separate window (non modal) <p>return [NSOpenPanel] the Cocoa dialog instance</p>
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#saveDialog-dynamic'>
+        #
+(void)
+<b>saveDialog</b><span>(callback, options = {})</span>
+      </a>
+    </span>
+    <span class='desc'>
+      Open the system file save dialog as a separate window (non modal) <p>return [NSSavePanel] the Cocoa dialog instance</p>
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#on-dynamic'>
+        #
+(App)
+<b>on</b><span>(name, callback)</span>
+      </a>
+    </span>
+    <span class='desc'>
+      Register events to be called from AppProxy via rpc 
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#onReady-dynamic'>
+        #
+(App)
+<b>onReady</b><span>(callback)</span>
+      </a>
+    </span>
+    <span class='desc'>
+      Register a callback for the Cocoa applicationDidFinishLaunching event 
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#onStopping-dynamic'>
+        #
+(App)
+<b>onStopping</b><span>(callback)</span>
+      </a>
+    </span>
+    <span class='desc'>
+      Register a callback for the Cocoa applicationWillTerminate event (before actually terminating the app) 
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#fireEvent-dynamic'>
+        #
+(void)
+<b>fireEvent</b><span>(event, args...)</span>
+      </a>
+    </span>
+    <span class='desc'>
+      fireEvent allows the App to call handlers in the AppProxy. 
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#createChild-dynamic'>
+        #
+(void)
+<b>createChild</b><span>()</span>
+      </a>
+    </span>
+    <span class='desc'>
+      Create the child process 
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#stopChild-dynamic'>
+        #
+(void)
+<b>stopChild</b><span>()</span>
+      </a>
+    </span>
+    <span class='desc'>
+      Stop the child process 
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#addWindow-dynamic'>
+        #
+(Window)
+<b>addWindow</b><span>(tag, title, styles, width = 0, height = 0)</span>
+      </a>
+    </span>
+    <span class='desc'>
+      Convenience method to add a window to the App <p>@param width [] Width of window default=0.</p>
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#addAppMenu-dynamic'>
+        #
+(AppMenu)
+<b>addAppMenu</b><span>(menuConfig)</span>
+      </a>
+    </span>
+    <span class='desc'>
+      Convenience method to add a window to the App 
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#addStatusBar-dynamic'>
+        #
+(App)
+<b>addStatusBar</b><span>(imagePath, menuConfig, name)</span>
+      </a>
+    </span>
+    <span class='desc'>
+      Convenience method to add a status bar menu to the App 
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#terminate-dynamic'>
+        #
+(void)
+<b>terminate</b><span>()</span>
+      </a>
+    </span>
+    <span class='desc'>
+      Terminate Cocoa App 
+    </span>
+  </li>
+</ul>
+      <h2>Constructor Details</h2>
+      <div class='methods'>
+  <div class='method_details'>
+    <p class='signature' id='constructor-dynamic'>
+      #
+(void)
+<b>constructor</b><span>(port = 5000)</span>
+      <br>
+    </p>
+    <div class='docstring'>
+  <p>Construct a new App</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>port</span>
+      <span class='type'>
+        (
+          <tt>Integer</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>Port the RPC server will listen to, default = 5000 </span>
+    </li>
+  </ul>
+</div>
+  </div>
+</div>
+      <h2>Instance Method Details</h2>
+      <div class='methods'>
+  <div class='method_details'>
+    <p class='signature' id='run-dynamic'>
+      #
+(void)
+<b>run</b><span>()</span>
+      <br>
+    </p>
+    <div class='docstring'>
+  <p>Start the Cocoa Runloop</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='handler-dynamic'>
+      #
+(String)
+<b>handler</b><span>(msg)</span>
+      <span class='bound note'>Bound</span>
+      <br>
+    </p>
+    <div class='docstring'>
+  <p>Handler for rpc calls</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>msg</span>
+      <span class='type'>
+        (
+          <tt>Object</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>An object of form {method:&quot;abc&quot;, id:42, params:args...} </span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (
+        <tt>String</tt>
+      )
+      &mdash;
+      <span class='desc'>JSON.stringified response object of form {&quot;response&quot;: error, &quot;status&quot;:&quot;ok&quot;, &quot;id&quot;:id} in success case or in error case {&quot;response&quot;: error, &quot;status&quot;:&quot;error&quot;, &quot;id&quot;:id} </span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='setMainMenu-dynamic'>
+      #
+(App)
+<b>setMainMenu</b><span>(menu)</span>
+      <br>
+    </p>
+    <div class='docstring'>
+  <p>Add the main menu to the App</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>menu</span>
+      <span class='type'>
+        (
+          <tt>NSMenu</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>An Cocoa NSMenu instance </span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (
+        <tt><a href='../class/App.html'>App</a></tt>
+      )
+      &mdash;
+      <span class='desc'>To allow call chaining </span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='setStatusBar-dynamic'>
+      #
+(App)
+<b>setStatusBar</b><span>(icon, title)</span>
+      <br>
+    </p>
+    <div class='docstring'>
+  <div class='deprecated note'>
+    <strong>Deprecated.</strong>
+    
+  </div>
+  <p>Add a status bar menu to the App</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>icon</span>
+      <span class='type'>
+        (
+          <tt>String</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>Path to a black and white icon of 18x18 pixel (non retina) </span>
+    </li>
+    <li>
+      <span class='name'>title</span>
+      <span class='type'>
+        (
+          <tt>String</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>Alternative string if icon is not shown </span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (
+        <tt><a href='../class/App.html'>App</a></tt>
+      )
+      &mdash;
+      <span class='desc'>To allow call chaining </span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='openDialog-dynamic'>
+      #
+(void)
+<b>openDialog</b><span>(callback, options = {})</span>
+      <br>
+    </p>
+    <div class='docstring'>
+  <p>Open the system file open dialog as a separate window (non modal)</p><p>return [NSOpenPanel] the Cocoa dialog instance</p>
+  <div class='examples'>
+    <h3>Examples:</h3>
+    <h4>
+      
+    </h4>
+    <pre><code class='coffeescript'>options =
+  folder:&quot;&#47;Users&#47;bernhard&#47;Development&quot;
+  multipleSelection: true
+  chooseFolders: true
+  chooseFiles: true
+  hiddenFiles: true
+  title: &quot;Test open&quot;
+  prompt: &quot;Get it&quot;
+  message: &quot;Select multiple files as you like&quot;
+
+app.openDialog((selection) -&gt;
+  console.log selection
+, options)</code></pre>
+  </div>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>callback</span>
+      <span class='type'>
+        (
+          <tt>function</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>The function to be called after file(s) have been selected or dialog has been cancelled </span>
+    </li>
+  </ul>
+  <h3>
+    Options Hash:
+    (options):
+  </h3>
+  <ul class='options'>
+    <li>
+      <span class='name'>folder</span>
+      <span class='type'>
+        (
+          <tt>String</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>Starting folder </span>
+    </li>
+    <li>
+      <span class='name'>multipleSelection</span>
+      <span class='type'>
+        (
+          <tt>Boolean</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>Allow to select more than one file </span>
+    </li>
+    <li>
+      <span class='name'>chooseFolders</span>
+      <span class='type'>
+        (
+          <tt>Boolean</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>Allow to select folders (instead of opening them) </span>
+    </li>
+    <li>
+      <span class='name'>chooseFiles</span>
+      <span class='type'>
+        (
+          <tt>Boolean</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>Allow to select files </span>
+    </li>
+    <li>
+      <span class='name'>hiddenFiles</span>
+      <span class='type'>
+        (
+          <tt>Boolean</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>Show hidden files/folders </span>
+    </li>
+    <li>
+      <span class='name'>title</span>
+      <span class='type'>
+        (
+          <tt>String</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>Title of the dialog window </span>
+    </li>
+    <li>
+      <span class='name'>prompt</span>
+      <span class='type'>
+        (
+          <tt>String</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>Prompt shown in the open File Dialog </span>
+    </li>
+    <li>
+      <span class='name'>message</span>
+      <span class='type'>
+        (
+          <tt>String</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>Message shown in the open File Dialog </span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='saveDialog-dynamic'>
+      #
+(void)
+<b>saveDialog</b><span>(callback, options = {})</span>
+      <br>
+    </p>
+    <div class='docstring'>
+  <p>Open the system file save dialog as a separate window (non modal)</p><p>return [NSSavePanel] the Cocoa dialog instance</p>
+  <div class='examples'>
+    <h3>Examples:</h3>
+    <h4>
+      
+    </h4>
+    <pre><code class='coffeescript'>options =
+  folder:&quot;&#47;Users&#47;bernhard&#47;Development&quot;
+  chooseFiles: true
+  hiddenFiles: true
+  title: &quot;Test save&quot;
+  prompt: &quot;save it&quot;
+  message: &quot;Save file&quot;
+
+app.saveDialog((selection) -&gt;
+  console.log selection
+, options)</code></pre>
+  </div>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>callback</span>
+      <span class='type'>
+        (
+          <tt>function</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>The function to be called after a filename has been selected or dialog has been cancelled </span>
+    </li>
+  </ul>
+  <h3>
+    Options Hash:
+    (options):
+  </h3>
+  <ul class='options'>
+    <li>
+      <span class='name'>folder</span>
+      <span class='type'>
+        (
+          <tt>String</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>Starting folder </span>
+    </li>
+    <li>
+      <span class='name'>chooseFiles</span>
+      <span class='type'>
+        (
+          <tt>Boolean</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>Allow to select files </span>
+    </li>
+    <li>
+      <span class='name'>hiddenFiles</span>
+      <span class='type'>
+        (
+          <tt>Boolean</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>Show hidden files/folders </span>
+    </li>
+    <li>
+      <span class='name'>title</span>
+      <span class='type'>
+        (
+          <tt>String</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>Title of the dialog window </span>
+    </li>
+    <li>
+      <span class='name'>prompt</span>
+      <span class='type'>
+        (
+          <tt>String</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>Prompt shown in the save File Dialog </span>
+    </li>
+    <li>
+      <span class='name'>message</span>
+      <span class='type'>
+        (
+          <tt>String</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>Message shown in the save File Dialog </span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='on-dynamic'>
+      #
+(App)
+<b>on</b><span>(name, callback)</span>
+      <br>
+    </p>
+    <div class='docstring'>
+  <p>Register events to be called from AppProxy via rpc</p>
+  <div class='examples'>
+    <h3>Examples:</h3>
+    <h4>
+      
+    </h4>
+    <pre><code class='coffeescript'># in App()
+app.on &quot;aNewEvent&quot;, (params...) -&gt;
+   doSomething app, params ...
+
+# in AppProxy
+appProxy.rcall(&quot;aNewEvent&quot;)(param1, param2, ...)
+.then (result) -&gt;
+  console.log &quot;callback result&quot;, result</code></pre>
+  </div>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>name</span>
+      <span class='type'>
+        (
+          <tt>String</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>Name of the event </span>
+    </li>
+    <li>
+      <span class='name'>callback</span>
+      <span class='type'>
+        (
+          <tt>Function</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>Callback function to be called when AppProxy calls the event via rpc </span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (
+        <tt><a href='../class/App.html'>App</a></tt>
+      )
+      &mdash;
+      <span class='desc'>for success to allow call chaining, else false (breaking the chain) </span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='onReady-dynamic'>
+      #
+(App)
+<b>onReady</b><span>(callback)</span>
+      <br>
+    </p>
+    <div class='docstring'>
+  <p>Register a callback for the Cocoa applicationDidFinishLaunching event</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>callback</span>
+      <span class='type'>
+        (
+          <tt>Function</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>The callback that will be called when Cocoa fires applicationDidFinishLaunching </span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (
+        <tt><a href='../class/App.html'>App</a></tt>
+      )
+      &mdash;
+      <span class='desc'>To allow call chaining </span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='onStopping-dynamic'>
+      #
+(App)
+<b>onStopping</b><span>(callback)</span>
+      <br>
+    </p>
+    <div class='docstring'>
+  <p>Register a callback for the Cocoa applicationWillTerminate event (before actually terminating the app)</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>callback</span>
+      <span class='type'>
+        (
+          <tt>Function</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>The callback that will be called when Cocoa fires applicationWillTerminate </span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (
+        <tt><a href='../class/App.html'>App</a></tt>
+      )
+      &mdash;
+      <span class='desc'>To allow call chaining </span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='fireEvent-dynamic'>
+      #
+(void)
+<b>fireEvent</b><span>(event, args...)</span>
+      <br>
+    </p>
+    <div class='docstring'>
+  <p>fireEvent allows the App to call handlers in the AppProxy.
+No return, it is fire and forget.</p>
+  <div class='examples'>
+    <h3>Examples:</h3>
+    <h4>
+      
+    </h4>
+    <pre><code class='coffeescript'># In the AppProxy
+appProxy = new AppProxy()
+.on &quot;handleOk&quot;, (arg) -&gt;
+  debug &quot;handleOk&quot;, arg
+
+# in the App
+app.fireEvent &quot;handleOk&quot;, {&quot;a&quot;:42, b:false}</code></pre>
+  </div>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>event</span>
+      <span class='type'>
+        (
+          <tt>String</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>Name of the event </span>
+    </li>
+    <li>
+      <span class='name'>args...</span>
+      <span class='type'>
+        (
+          <tt>Array&lt;Object&gt;</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>Arguments for the rpc call </span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='createChild-dynamic'>
+      #
+(void)
+<b>createChild</b><span>()</span>
+      <br>
+    </p>
+    <div class='docstring'>
+  <p>Create the child process</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='stopChild-dynamic'>
+      #
+(void)
+<b>stopChild</b><span>()</span>
+      <br>
+    </p>
+    <div class='docstring'>
+  <p>Stop the child process</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='addWindow-dynamic'>
+      #
+(Window)
+<b>addWindow</b><span>(tag, title, styles, width = 0, height = 0)</span>
+      <br>
+    </p>
+    <div class='docstring'>
+  <p>Convenience method to add a window to the App</p><p>@param width [] Width of window default=0. Usually not used, due to Autolayout support
+@param height [] Height of window default=0. Usually not used, due to Autolayout support</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>tag</span>
+      <span class='type'>
+        (
+          <tt>String</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>Tag of window (each window must have a different tag) </span>
+    </li>
+    <li>
+      <span class='name'>title</span>
+      <span class='type'>
+        (
+          <tt>String</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>Window title </span>
+    </li>
+    <li>
+      <span class='name'>styles</span>
+      <span class='type'>
+        (
+          <tt>Array&lt;String&gt;</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>Style Strings can be: &quot;Titled&quot;, &quot;Resizable&quot;, &quot;Miniaturizable&quot;, &quot;Closable&quot; </span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (
+        <tt><a href='../class/Window.html'>Window</a></tt>
+      )
+      &mdash;
+      <span class='desc'>An instance of class Window </span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='addAppMenu-dynamic'>
+      #
+(AppMenu)
+<b>addAppMenu</b><span>(menuConfig)</span>
+      <br>
+    </p>
+    <div class='docstring'>
+  <p>Convenience method to add a window to the App</p>
+  <div class='examples'>
+    <h3>Examples:</h3>
+    <h4>
+      
+    </h4>
+    <pre><code class='coffeescript'>menuConfig =
+  &quot;AppMenu&quot;: [      # name not used
+      {title: &quot;About&quot;, action: &quot;orderFrontStandardAboutPanel&quot;, key: &quot;&quot;}
+      &quot;-&quot;
+      {title: &quot;Preferences&quot;, action: preferences, key: &quot;,&quot;}
+      &quot;-&quot;
+      {title: &quot;Quit #{name}&quot;, action: &quot;terminate&quot;, key: &quot;q&quot;}
+    ]
+  &quot;File&quot;: [
+      {title:&quot;New&quot;,  action:&quot;newDocument&quot;, key:&quot;n&quot;}
+      {title:&quot;Open&quot;, action:&quot;openDocument&quot;, key:&quot;o&quot;}
+      &quot;-&quot;
+      {title:&quot;Close&quot;, action:&quot;performClose&quot;, key:&quot;w&quot;}
+      {title:&quot;Save...&quot;, action:&quot;saveDocument&quot;, key:&quot;s&quot;}
+      {title:&quot;Save As...&quot;, action:&quot;saveDocumentAs&quot;, key:&quot;&quot;}
+      &quot;-&quot;
+      &quot;WithSubMenus&quot;: [
+        {title:&quot;SubMenu 1&quot;, action: (-&gt; console.log (&quot;Submenu 1&quot;)), key:&quot;&quot;}
+        &quot;FurtherSubMenus&quot;: [
+          {title:&quot;SubMenu 2.1&quot;, action: (-&gt; console.log (&quot;Submenu 2.1&quot;)), key:&quot;&quot;}
+          {title:&quot;SubMenu 2.2&quot;, action: (-&gt; console.log (&quot;Submenu 2.2&quot;)), key:&quot;&quot;}
+        ]
+        {title:&quot;SubMenu 3&quot;, action: (-&gt; console.log (&quot;Submenu 3&quot;)), key:&quot;&quot;}
+      ]
+      &quot;-&quot;
+      {title:&quot;Print...&quot;, action:&quot;print&quot;, key:&quot;&quot;}
+
+ menu = app.addAppMenu(menuConfig)
+ .init()</code></pre>
+  </div>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>menuConfig</span>
+      <span class='type'>
+        (
+          <tt>Object</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>Menu definition, see example </span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (
+        <tt><a href='../class/AppMenu.html'>AppMenu</a></tt>
+      )
+      &mdash;
+      <span class='desc'>An instance of class AppMenu </span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='addStatusBar-dynamic'>
+      #
+(App)
+<b>addStatusBar</b><span>(imagePath, menuConfig, name)</span>
+      <br>
+    </p>
+    <div class='docstring'>
+  <p>Convenience method to add a status bar menu to the App</p>
+  <div class='examples'>
+    <h3>Examples:</h3>
+    <h4>
+      
+    </h4>
+    <pre><code class='coffeescript'>menuConfig =
+  &quot;StatusMenu&quot;: [   # name not used
+    &quot;WithSubMenus&quot;: [
+      {title:&quot;SubMenu 1&quot;, action: (-&gt; console.log (&quot;Status Submenu 1&quot;)), key:&quot;&quot;}
+      &quot;FurtherSubMenus&quot;: [
+        {title:&quot;SubMenu 2.1&quot;, action: (-&gt; console.log (&quot;Status Submenu 2.1&quot;)), key:&quot;&quot;}
+        {title:&quot;SubMenu 2.2&quot;, action: (-&gt; console.log (&quot;Status Submenu 2.2&quot;)), key:&quot;&quot;}
+      ]
+      {title:&quot;SubMenu 3&quot;, action: (-&gt; console.log (&quot;Status Submenu 3&quot;)), key:&quot;&quot;}
+    ]
+    {title: &quot;Quit #{name}&quot;, action: &quot;terminate&quot;, key: &quot;q&quot;}
+  ]
+statusBar = app.addStatusBar(imagePath, menuConfig, name)
+.init()</code></pre>
+  </div>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>imagePath</span>
+      <span class='type'>
+        (
+          <tt>String</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>Path to a black and white icon of 18x18 pixel (non retina) </span>
+    </li>
+    <li>
+      <span class='name'>menuConfig</span>
+      <span class='type'>
+        (
+          <tt>Object</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>Menu definition, see example </span>
+    </li>
+    <li>
+      <span class='name'>name</span>
+      <span class='type'>
+        (
+          <tt>String</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>Alternative string if icon is not shown </span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (
+        <tt><a href='../class/App.html'>App</a></tt>
+      )
+      &mdash;
+      <span class='desc'>To allow call chaining </span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='terminate-dynamic'>
+      #
+(void)
+<b>terminate</b><span>()</span>
+      <br>
+    </p>
+    <div class='docstring'>
+  <p>Terminate Cocoa App</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+</div>
+    </div>
+    <div id='footer'>
+  March 07, 15 14:01:56 by
+  <a href='https://github.com/coffeedoc/codo' title='CoffeeScript API documentation generator'>
+    Codo
+  </a>
+  2.0.10
+  &#10034;
+  Press H to see the keyboard shortcuts
+  &#10034;
+  <a href='http://twitter.com/netzpirat' target='_parent'>@netzpirat</a>
+  &#10034;
+  <a href='http://twitter.com/_inossidabile' target='_parent'>@_inossidabile</a>
+</div>
+<iframe id='search_frame'></iframe>
+<div id='fuzzySearch'>
+  <input type='text'>
+  <ol></ol>
+</div>
+<div id='help'>
+  <p>
+    Quickly fuzzy find classes, mixins, methods, file:
+  </p>
+  <ul>
+    <li>
+      <span>T</span>
+      Open fuzzy finder dialog
+    </li>
+  </ul>
+  <p>
+    Control the navigation frame:
+  </p>
+  <ul>
+    <li>
+      <span>L</span>
+      Toggle list view
+    </li>
+    <li>
+      <span>C</span>
+      Show class list
+    </li>
+    <li>
+      <span>I</span>
+      Show mixin list
+    </li>
+    <li>
+      <span>F</span>
+      Show file list
+    </li>
+    <li>
+      <span>M</span>
+      Show method list
+    </li>
+    <li>
+      <span>E</span>
+      Show extras list
+    </li>
+  </ul>
+  <p>
+    You can focus and blur the search input:
+  </p>
+  <ul>
+    <li>
+      <span>S</span>
+      Focus search input
+    </li>
+    <li>
+      <span>Esc</span>
+      Blur search input
+    </li>
+  </ul>
+</div>
+  </body>
+</html>
